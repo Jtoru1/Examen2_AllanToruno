@@ -11,6 +11,40 @@ CREATE TABLE Usuarios (
     CONSTRAINT PK_USUARIOID PRIMARY KEY (UsuarioID)
 )
 GO
+CREATE TABLE Rol
+(
+
+ID int IDENTITY (1,1) ,
+DESCRIPCION VARCHAR (20) NOT NULL,
+CONSTRAINT PK_IDRoles PRIMARY KEY (ID),
+
+)
+CREATE TABLE Usuario_Sistema 
+(
+ID INT,
+CONSTRAINT PK_IDUserSistem PRIMARY KEY (ID),
+    Clave VARCHAR(50) NOT NULL,
+    Correo VARCHAR(50) NOT NULL,
+    UsuarioID INT,
+    CONSTRAINT FK_Usuario_Sistema_Usuarios
+    FOREIGN KEY (UsuarioID) REFERENCES Usuarios (UsuarioID)
+)
+GO
+CREATE TABLE UsuarioRoles
+(
+ID INT,
+ CONSTRAINT PK_IDuserRol PRIMARY KEY(ID),
+UsuarioID INT,
+IDRol int ,
+Fecha DATETIME CONSTRAINT DF_FECHA DEFAULT GETDATE (),
+CONSTRAINT FK_UsuarioRoles_Rol
+FOREIGN KEY (IDRol) REFERENCES Rol (ID),
+CONSTRAINT FK_UsuarioRoles_Sistema
+FOREIGN KEY (UsuarioID) REFERENCES Usuario_Sistema (ID)
+)
+GO
+
+
 
 CREATE TABLE Equipos (
     EquipoID INT IDENTITY (1,1),
@@ -62,28 +96,48 @@ CREATE TABLE Asignaciones (
 )
 GO
 
-CREATE TABLE USUARIO 
-(
-ID INT IDENTITY,
-CLAVE VARCHAR (50) NOT NULL,
-CORREO VARCHAR (50) NOT NULL,
-CONSTRAINT PK_IDUSUARIO PRIMARY KEY (ID),
-CONSTRAINT UQ_CORREO UNIQUE (CORREO)
-)
-GO
-CREATE TABLE ROLE
-(
-ID VARCHAR (20),
-DESCRIPCION VARCHAR (20) NOT NULL,
-CONSTRAINT PK_IDROLES PRIMARY KEY (ID)
-)
-GO
-CREATE TABLE USUARIOROLES
-(ID INT IDENTITY CONSTRAINT PK_IDUSERROLE PRIMARY KEY,
-IDUSUARIO INT,
-IDROLE VARCHAR (20),
-FECHA DATETIME CONSTRAINT DF_FECHA DEFAULT GETDATE (),
-CONSTRAINT FK_IDUSUARIO FOREIGN KEY (IDUSUARIO) REFERENCES USUARIO(ID),
-CONSTRAINT FK_IDROLE FOREIGN KEY (IDROLE) REFERENCES ROLE(ID)
-)
-GO
+
+
+
+
+SELECT * FROM Usuarios 
+SELECT * FROM Rol
+SELECT*FROM UsuarioRoles
+
+Select UsuarioRoles.IDUsuario, Usuario_Sistema.Correo,UsuarioRoles.IDRol,Rol.Descripcion
+FROM UsuarioRoles	
+INNER JOIN Usuarios ON USUARIO.ID=UsuarioRoles.IDUsuario
+INNER JOIN Rol ON Rol.ID=UsuarioRoles.IDRol
+
+
+create or alter procedure ValidarUsuario
+
+@correo varchar (50),
+@clave varchar (50)
+as 
+begin
+
+select Usuario_Sistema.correo as Correo, usuarios.Nombre, Rol.ID as RolId, rol.DESCRIPCION  as Rol from Usuario_Sistema 
+inner join Usuarios on Usuarios.UsuarioID= Usuario_Sistema.UsuarioID
+inner join UsuarioRoles on UsuarioRoles.UsuarioID=Usuario_Sistema.ID
+inner join Rol on Rol.ID=UsuarioRoles.IDRol
+where Usuario_Sistema.Correo=@correo and Usuario_Sistema.Clave = @clave
+end
+   
+
+
+
+   select Tecnicos.TecnicoID as ID, Tecnicos.Nombre, Asignaciones.AsignacionID, Asignaciones.FechaAsignacion, Asignaciones.AsignacionID as Codigo_Reparacion,
+   reparaciones.FechaSolicitud,Reparaciones.Estado, DetallesReparacion.Descripcion, Equipos.TipoEquipo, equipos.Modelo, Usuarios.Nombre, Usuarios.Correo from Tecnicos
+   inner join Asignaciones ON Asignaciones.TecnicoID = Tecnicos.TecnicoID
+   inner join Reparaciones ON Asignaciones.ReparacionID= Reparaciones.ReparacionID
+   INNER join DetallesReparacion on DetallesReparacion.ReparacionID= Reparaciones.ReparacionID
+   inner join Equipos on Equipos.EquipoID = Reparaciones.EquipoID
+   inner join Usuarios on usuarios.UsuarioID = Equipos.UsuarioID
+   where Usuarios.Correo=@correo
+
+   
+
+   select UsuarioRoles.ID as ID, Usuario_Sistema.Correo, UsuarioRoles.IDRol,Rol.DESCRIPCION as Rol  from Usuario_Sistema 
+   inner join UsuarioRoles on Usuario_Sistema.ID=UsuarioRoles.UsuarioID
+   inner join Rol on UsuarioRoles.IDRol=Rol.ID

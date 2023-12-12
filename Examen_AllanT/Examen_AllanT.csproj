@@ -67,7 +67,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AsigRoles.aspx" />
     <Content Include="BD_AllanT\Examen2_AllanT.sql" />
+    <Content Include="Consultas.aspx" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
     <Content Include="css\bootstrap-grid.rtl.css" />
@@ -86,12 +88,15 @@
     <Content Include="css\bootstrap.rtl.min.css" />
     <Content Include="css\Menu.css" />
     <Content Include="Equipos.aspx" />
+    <Content Include="Imagenes\login.png" />
     <Content Include="js\bootstrap.bundle.js" />
     <Content Include="js\bootstrap.bundle.min.js" />
     <Content Include="js\bootstrap.esm.js" />
     <Content Include="js\bootstrap.esm.min.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="Login.aspx" />
+    <Content Include="Roles.aspx" />
     <Content Include="Styles.css" />
     <Content Include="Tablas\Tablas.aspx" />
     <Content Include="Tecnicos.aspx" />
@@ -99,13 +104,36 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsigRoles.aspx.cs">
+      <DependentUpon>AsigRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsigRoles.aspx.designer.cs">
+      <DependentUpon>AsigRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Clases\Clase_Usuario.cs" />
     <Compile Include="Clases\ConexionBD.cs" />
+    <Compile Include="Clases\Usuario_Actual.cs" />
+    <Compile Include="Consultas.aspx.cs">
+      <DependentUpon>Consultas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consultas.aspx.designer.cs">
+      <DependentUpon>Consultas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Equipos.aspx.cs">
       <DependentUpon>Equipos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Equipos.aspx.designer.cs">
       <DependentUpon>Equipos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menu.Master.cs">
       <DependentUpon>Menu.Master</DependentUpon>
@@ -115,6 +143,13 @@
       <DependentUpon>Menu.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roles.aspx.cs">
+      <DependentUpon>Roles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Roles.aspx.designer.cs">
+      <DependentUpon>Roles.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Tablas\Tablas.aspx.cs">
       <DependentUpon>Tablas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

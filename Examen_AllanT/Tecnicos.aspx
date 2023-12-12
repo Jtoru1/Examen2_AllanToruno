@@ -15,7 +15,7 @@
                 <br />
                 <label for="txtEspecialidad">Especialidad:</label>
                 <asp:TextBox ID="txtEspecialidad" runat="server"></asp:TextBox>
-                <br />             
+                <br />
                 <asp:Button ID="btnAgregar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
                 <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
 
@@ -24,11 +24,11 @@
 
             <br />
         </div>
-                <asp:TextBox ID="txtFiltroNombre" runat="server" placeholder="Ingrese un Nombre"></asp:TextBox>
-<asp:Button ID="btnFiltrar" runat="server" Text="Filtrar por Nombre" OnClick="btnFiltrar_Click" />
+        <asp:TextBox ID="txtFiltroNombre" runat="server" placeholder="Ingrese un Nombre"></asp:TextBox>
+        <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar por Nombre" OnClick="btnFiltrar_Click" />
         <br />
 
-<br />
+        <br />
         <asp:GridView ID="GridViewTecnicos" runat="server" AutoGenerateColumns="False" DataKeyNames="TecnicoID" DataSourceID="SqlDataSourceTecnicos">
 
             <Columns>

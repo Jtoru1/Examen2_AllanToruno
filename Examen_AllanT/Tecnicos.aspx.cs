@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Examen_AllanT.Clases;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -18,10 +19,33 @@ namespace Examen_AllanT
             
             string s = System.Configuration.ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
             conn = new SqlConnection("Data Source=DESKTOP-FOV1KMO\\SQLEXPRESS;Initial Catalog=Examen2_AllanT;Integrated Security=True");
+            Usuario usuario = Usuario_Actual.GetUsuario();
+
+            if (usuario != null)
+            {
+                // Verifica si el usuario tiene el rol de técnico
+                if (usuario.Rol == "Tecnico")
+                {
+                    // Si es un técnico, oculta la tabla de tecnicos
+                    GridViewTecnicos.Visible = false;
+                    Mostrar_Formulario.Visible = false;
+                    btnFiltrar.Visible = false;
+                    txtFiltroNombre.Visible = false;
+                }
+                else
+                {
+                    // Si no es un técnico, muestra la tabla de tecnicos
+                    GridViewTecnicos.Visible = true;
+                    Mostrar_Formulario.Visible = true;
+                    pnlFormulario.Visible = false; // Puedes ocultar el panel del formulario si es necesario
+                   
+                }
+            }
         }
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             pnlFormulario.Visible = !pnlFormulario.Visible;
+            btnFiltrar.Visible = true;
 
         }
         protected void Guardar_Click(object sender, EventArgs e)

@@ -11,70 +11,79 @@ namespace Examen_AllanT
 {
 
 
-    public partial class Menu1
+    public partial class Roles
     {
 
         /// <summary>
-        /// Control form1.
+        /// Control Mostrar_Formulario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Button Mostrar_Formulario;
 
         /// <summary>
-        /// Control equipostab.
+        /// Control pnlFormularioRol.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl equipostab;
+        protected global::System.Web.UI.WebControls.Panel pnlFormularioRol;
 
         /// <summary>
-        /// Control tecnicostab.
+        /// Control txtdescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tecnicostab;
+        protected global::System.Web.UI.WebControls.TextBox txtdescripcion;
 
         /// <summary>
-        /// Control rolestab.
+        /// Control btnAgregarrol.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl rolestab;
+        protected global::System.Web.UI.WebControls.Button btnAgregarrol;
 
         /// <summary>
-        /// Control asigrolestab.
+        /// Control lblMensajerol.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl asigrolestab;
+        protected global::System.Web.UI.WebControls.Label lblMensajerol;
 
         /// <summary>
-        /// Control miBoton.
+        /// Control contenedor_busqueda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button miBoton;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl contenedor_busqueda;
 
         /// <summary>
-        /// Control MainContent.
+        /// Control GridViewRoles.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.GridView GridViewRoles;
+
+        /// <summary>
+        /// Control SqlDataSourceRoles.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceRoles;
     }
 }
